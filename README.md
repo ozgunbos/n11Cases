@@ -37,3 +37,10 @@ websiteTitle=n11.com - Hayat Sana Gelir
 runDocker=docker
 
 ```
+* Also, ```browserName``` can be changed to firefox to use Firefox Driver.
+
+* To run test following commands should be run
+
+``` mvn clean install ```
+
+``` mvn clean test -Dtest=CucumberRunner ```
