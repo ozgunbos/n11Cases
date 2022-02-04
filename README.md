@@ -5,3 +5,8 @@ These test scenarios include the projects requested by N11 company. The followin
 </br></br>
 
 ## Project Features </br>
+
+* Webdriver is used from [bonigarcia](https://github.com/bonigarcia/webdrivermanager) repo.
+* It saves a screenshot when an error is encountered during the test. Screenshots are kept under target/html-reports.
+* The project was developed in Java with the Selenium Test Framework. POM is used in architecture.
+* JUnit and TestNG library are used for annotations and assertions.
