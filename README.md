@@ -44,3 +44,9 @@ runDocker=docker
 ``` mvn clean install ```
 
 ``` mvn clean test -Dtest=CucumberRunner ```
+
+Sample Project Video
+
+## Proje Videosu  </br> 
+
+![](https://github.com/ozgunbos/n11Cases/blob/main/Ornek.gif)
