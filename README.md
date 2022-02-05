@@ -48,6 +48,6 @@ runDocker=docker
 
 ## Sample Project Video (Local Test and Selenium Grid in Docker)  </br> 
 
-Password is ```secret``` to view session 
+Password is ```secret``` to view session in Selenium Grid.
 
 ![](https://github.com/ozgunbos/n11Cases/blob/main/Ornek.gif)
