@@ -16,7 +16,7 @@ These test scenarios include the projects requested by N11 company. The followin
 
 ## Installation Procedure </br>
 
-* [MAVEN executable location](https://github.com/ozgunbos/n11Cases/blob/main/case2/pom.xml#L72) should be changed for second case.
+* [MAVEN executable location](https://github.com/ozgunbos/n11Cases/blob/main/case2/pom.xml#L72) should be changed according to the operating system to test second case.
 * In command prompt or bash screen, navigate to main folder to use Selenium Grid in Docker 
 * Run following command  
 ``` docker-compose -f docker-compose.yaml up -d ```
