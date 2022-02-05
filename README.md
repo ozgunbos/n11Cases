@@ -30,6 +30,8 @@ These test scenarios include the projects requested by N11 company. The followin
 * When everything is done Selenium Grid should be run at [http://localhost:4444/grid/console](http://localhost:4444/grid/console)
 * To use Selenium Grid, runDocker property should be assign as "docker" in the configurations.properties file in the main directory.
 
+```configurations.properties file```
+
 ``` 
 browserName=chrome
 baseURI=https://www.n11.com
@@ -39,7 +41,7 @@ runDocker=docker
 ```
 * Also, ```browserName``` can be changed to firefox to use Firefox Driver.
 
-* To run test following commands should be run
+* To run test following commands should be run.
 
 ``` mvn clean install ```
 
