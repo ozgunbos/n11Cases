@@ -46,6 +46,6 @@ runDocker=docker
 ``` mvn clean test -Dtest=CucumberRunner ```
 
 
-## Sample Project Video  </br> 
+## Sample Project Video (Local Test and Selenium Grid in Docker)  </br> 
 
 ![](https://github.com/ozgunbos/n11Cases/blob/main/Ornek.gif)
