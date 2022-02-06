@@ -16,6 +16,7 @@ These test scenarios include the projects requested by N11 company. The followin
 
 ## Installation Procedure </br>
 
+* Installation steps for JMeter you can find [here](https://github.com/ozgunbos/n11Cases/tree/main/JMeter). 
 * [MAVEN executable location](https://github.com/ozgunbos/n11Cases/blob/main/case2/pom.xml#L72) should be changed according to the operating system to test second case.
 * In command prompt or bash screen, navigate to main folder to use Selenium Grid in Docker 
 * Run following command  
