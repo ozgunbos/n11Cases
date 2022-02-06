@@ -6,8 +6,7 @@ These test scenarios include the projects requested by N11 company. The followin
 
 ## Project Features </br>
 
-* The project was developed in Java with the Selenium Test Framework and JMeter (5.1.1) . POM is used in architecture.
-* JMeter version is 5.1.1
+* The project was developed in Java with the Selenium Test Framework and JMeter (5.1.1). POM is used in architecture.
 * Webdriver is used from [bonigarcia](https://github.com/bonigarcia/webdrivermanager) repo.
 * It saves a screenshot when an error is encountered during the test. Screenshots are kept under src folder for [case1](https://github.com/ozgunbos/n11Cases/tree/main/case1) and target/html-reports for [case2](https://github.com/ozgunbos/n11Cases/tree/main/case2) 
 * JUnit and TestNG library are used for annotations and assertions.
