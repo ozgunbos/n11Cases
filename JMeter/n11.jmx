@@ -76,18 +76,21 @@ WDS.browser.get(${url})
 var wait=new ui.WebDriverWait(WDS.browser,10)
 
 
-
+wait.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.className(&apos;price-cover&apos;)))
 var price = WDS.browser.findElement(pkg.By.id(&apos;productPrice&apos;));
 var value = price.getAttribute(&quot;value&quot;);
 
 
 
 var addclick = wait.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.xpath(&quot;//a[contains(text(),&apos;Sepete Ekle&apos;)]&quot;)))
+wait.until(ui.ExpectedConditions.elementToBeClickable(pkg.By.xpath(&quot;//a[contains(text(),&apos;Sepete Ekle&apos;)]&quot;)))
+var btnClick = WDS.browser.findElement(pkg.By.xpath(&quot;//a[contains(text(),&apos;Sepete Ekle&apos;)]&quot;))
 if(parsePrice(value) &lt; 100) {
-
+	
+	
 	addclick.click();
 	
-	WDS.browser.executeScript(&apos;window.scrollTo(100,100)&apos;)
+	
 	}
 
 
@@ -95,8 +98,13 @@ var checkUrunName = WDS.vars.get(&apos;urun&apos;).trim()
 
 
 if(checkUrunName == &quot;erkekparfum&quot;) {
+	WDS.browser.navigate().refresh()
+
+		
+			
 		fieldForm();
 		paymentMethod();
+		
 	}
 
 WDS.sampleResult.sampleEnd()
@@ -104,6 +112,9 @@ WDS.log.info(&quot;successfully navigated to https://n11.com/&quot;);
 
 
 function fieldForm() {
+	
+	waitForElement(pkg.By.cssSelector(&apos;.icon.iconBasket&apos;));
+	
 	
 	var basketSection = WDS.browser.findElement(pkg.By.cssSelector(&apos;.icon.iconBasket&apos;));
 	basketSection.click();
