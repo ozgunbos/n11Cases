@@ -1,6 +1,6 @@
 ## Installation Procedure </br>
 
-</br> 
+</br> </br>
 
 * Navigate to "bin" folder to run Apache JMeter. 
 
