@@ -14,34 +14,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Objects;
 
-//public class DriverFactory {
-//    private DriverFactory() {
-//
-//    }
-//
-//    private static WebDriver driver;
-//
-//    public static WebDriver get() {
-//        if (driver == null) {
-//            WebDriverManager.chromedriver().setup();
-//                    driver = new ChromeDriver();
-//            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-//            driver.manage().window().maximize();
-//        }
-//        return driver;
-//    }
-//
-//
-//
-//    public static void close() {
-//        if (driver == null)
-//            System.out.println("Driver is already closed");
-//        driver.quit();
-//        driver = null;
-//
-//    }
-//
-//}
+
 
 public class DriverFactory {
 
