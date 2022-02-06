@@ -2,6 +2,8 @@
 
 </br> </br>
 
+* You should have Apache JMeter 5.1.1 version and jdk8+ 
+
 * Navigate to "bin" folder to run Apache JMeter. 
 
 * You can run below command in Bash to run JMeter 
