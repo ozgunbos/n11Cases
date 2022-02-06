@@ -2,6 +2,14 @@
 
 </br> 
 
+* Navigate to "bin" folder to run Apache JMeter. 
+
+* You can run below command in Bash to run JMeter 
+
+    ``` java -jar ApacheJMeter.jar ```
+    
+    or just run run ``` "jmeterw.cmd"``` file in "bin" folder.
+
 * There are two steps to run a test in JMeter.
 
 * Data Set Config for csv should be assigned as below in ```Data Set Config file```
