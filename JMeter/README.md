@@ -8,7 +8,7 @@
 
     ``` java -jar ApacheJMeter.jar ```
     
-    or just run run ``` "jmeterw.cmd"``` file in "bin" folder.
+    or just run ``` "jmeterw.cmd"``` file in "bin" folder.
 
 * There are two steps to run a test in JMeter.
 
