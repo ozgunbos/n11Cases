@@ -4,6 +4,7 @@
 
 * Go to the Campaigns page.
 * Save all the campaigns and promotions in Excel with urls.
+* CSV file will be saved in /src folder.
 </br></br>
 ## Homework - 2
 
