@@ -15,4 +15,4 @@
 </br></br>
 ## Sample Video for a test in JMeter </br>
 
-![](https://github.com/ozgunbos/n11Cases/blob/main/JMeter/JMeter.gif)
+![](https://github.com/ozgunbos/n11Cases/blob/main/JMeter/JMeter Sample.gif.gif)
