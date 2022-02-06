@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">true</boolProp>
+          <stringProp name="LoopController.loops">15</stringProp>
+        </LoopController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">E:/chrome indirilenler/apache-jmeter-5.1.1/apache-jmeter-5.1.1/test.csv</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">url, urun</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="jp@gc - Chrome Driver Config" enabled="true">
+            <stringProp name="WebDriverConfig.proxy_type">SYSTEM</stringProp>
+            <stringProp name="WebDriverConfig.proxy_pac_url"></stringProp>
+            <stringProp name="WebDriverConfig.http_host"></stringProp>
+            <intProp name="WebDriverConfig.http_port">8080</intProp>
+            <boolProp name="WebDriverConfig.use_http_for_all_protocols">true</boolProp>
+            <stringProp name="WebDriverConfig.https_host"></stringProp>
+            <intProp name="WebDriverConfig.https_port">8080</intProp>
+            <stringProp name="WebDriverConfig.ftp_host"></stringProp>
+            <intProp name="WebDriverConfig.ftp_port">8080</intProp>
+            <stringProp name="WebDriverConfig.socks_host"></stringProp>
+            <intProp name="WebDriverConfig.socks_port">8080</intProp>
+            <stringProp name="WebDriverConfig.no_proxy">localhost</stringProp>
+            <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
+            <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
+            <boolProp name="WebDriverConfig.dev_mode">false</boolProp>
+            <stringProp name="ChromeDriverConfig.chromedriver_path">E:\chromedriver.exe</stringProp>
+            <boolProp name="ChromeDriverConfig.android_enabled">false</boolProp>
+            <boolProp name="ChromeDriverConfig.headless_enabled">false</boolProp>
+            <boolProp name="ChromeDriverConfig.insecurecerts_enabled">false</boolProp>
+            <boolProp name="ChromeDriverConfig.incognito_enabled">false</boolProp>
+            <boolProp name="ChromeDriverConfig.no_sandbox_enabled">false</boolProp>
+          </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
+          <hashTree/>
+          <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="jp@gc - WebDriver Sampler" enabled="true">
+            <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium);
+var ui=JavaImporter(org.openqa.selenium.support.ui);
+var select = JavaImporter(org.openqa.selenium.support.ui.Select);
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(${url})
+var wait=new ui.WebDriverWait(WDS.browser,10)
+
+
+
+var price = WDS.browser.findElement(pkg.By.id(&apos;productPrice&apos;));
+var value = price.getAttribute(&quot;value&quot;);
+
+
+
+var addclick = wait.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.xpath(&quot;//a[contains(text(),&apos;Sepete Ekle&apos;)]&quot;)))
+if(parsePrice(value) &lt; 100) {
+
+	addclick.click();
+	
+	WDS.browser.executeScript(&apos;window.scrollTo(100,100)&apos;)
+	}
+
+
+var checkUrunName = WDS.vars.get(&apos;urun&apos;).trim()
+
+
+if(checkUrunName == &quot;erkekparfum&quot;) {
+		fieldForm();
+		paymentMethod();
+	}
+
+WDS.sampleResult.sampleEnd()
+WDS.log.info(&quot;successfully navigated to https://n11.com/&quot;);
+
+
+function fieldForm() {
+	
+	var basketSection = WDS.browser.findElement(pkg.By.cssSelector(&apos;.icon.iconBasket&apos;));
+	basketSection.click();
+	var waitKVKK = new ui.WebDriverWait(WDS.browser,5)
+	var kvkkText = waitKVKK.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.xpath(&apos;//*[@id=&quot;userKvkkModal&quot;]/div/div[2]/span&apos;)));
+	kvkkText.click();
+
+	var buyBtn = WDS.browser.findElement(pkg.By.xpath(&quot;//*[@id=\&quot;js-buyBtn\&quot;]&quot;));
+	buyBtn.click();
+	
+	var guest = waitKVKK.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.className(&apos;btn-continue&apos;)));
+	
+	var continueGuest = WDS.browser.findElement(pkg.By.className(&apos;btn-continue&apos;));
+	continueGuest.click();
+
+
+	  var guestEmail = waitKVKK.until(ui.ExpectedConditions.elementToBeClickable(pkg.By.id(&quot;guestEmail&quot;)));
+       guestEmail.sendKeys(&quot;randomemailaddress@email.com&quot;);
+
+
+        var clickGuestEmail = wait.until(ui.ExpectedConditions.elementToBeClickable(pkg.By.id(&quot;js-guestEmailCheck&quot;)));
+        clickGuestEmail.click();
+
+        var firstName = wait.until(ui.ExpectedConditions.elementToBeClickable(pkg.By.id(&quot;fullName&quot;)));
+        firstName.sendKeys(&quot;random firstname and last&quot;);
+
+
+		var elementSelection = WDS.browser.findElement(pkg.By.name(&quot;shippingAddress.cityId&quot;))
+		var select = new org.openqa.selenium.support.ui.Select(elementSelection)
+		select.selectByVisibleText(&apos;Ankara&apos;)
+		
+
+		waitKVKK.until(ui.ExpectedConditions.visibilityOfElementLocated(pkg.By.name(&quot;shippingAddress.districtId&quot;)));
+        var districtSelection = WDS.browser.findElement(pkg.By.name(&quot;shippingAddress.districtId&quot;))
+        var dSelect = new org.openqa.selenium.support.ui.Select(districtSelection)
+        dSelect.selectByIndex(3);
+
+        
+        waitForElement(pkg.By.name(&quot;shippingAddress.neighborhoodId&quot;))
+	    var neighbor = WDS.browser.findElement(pkg.By.name(&quot;shippingAddress.neighborhoodId&quot;))
+        var nSelect = new org.openqa.selenium.support.ui.Select(neighbor)
+        nSelect.selectByIndex(3);
+
+		
+        var addressDetail = WDS.browser.findElement(pkg.By.id(&quot;addressDetail&quot;));
+        addressDetail.sendKeys(&quot;cok keyifli bi adres girmek isterdim ancak test asamasındayım&quot;);
+
+        var gsm = WDS.browser.findElement(pkg.By.name(&quot;shippingAddress.gsm&quot;));
+        gsm.click();
+        
+        gsm.sendKeys(&quot;523652365&quot;);
+
+        var addressTc = WDS.browser.findElement(pkg.By.id(&quot;shippingAddresstcNO&quot;));
+        addressTc.sendKeys(&quot;36574636314&quot;);
+
+        var nameAddress = WDS.browser.findElement(pkg.By.name(&quot;shippingAddress.title&quot;));
+        nameAddress.sendKeys(&quot;denemetest&quot;);
+        
+	   waitForElement(pkg.By.id(&quot;js-goToPaymentBtn&quot;))
+        var passToPayment = WDS.browser.findElement(pkg.By.id(&quot;js-goToPaymentBtn&quot;));
+        passToPayment.click();
+	}
+
+
+function paymentMethod() {
+
+	   waitForElement(pkg.By.cssSelector(&quot;.cardNumberInput.-metrika-nokeys.ui-input-numpad&quot;));	
+        var enterCc = WDS.browser.findElements(pkg.By.cssSelector(&quot;.cardNumberInput.-metrika-nokeys.ui-input-numpad&quot;));
+        enterCc[0].sendKeys(&quot;5153&quot;);
+        enterCc[1].sendKeys(&quot;4444&quot;);
+        enterCc[2].sendKeys(&quot;3333&quot;);
+        enterCc[3].sendKeys(&quot;0000&quot;);
+
+        var firstAndLastName = WDS.browser.findElement(pkg.By.id(&quot;cardOwnerName&quot;));
+        firstAndLastName.sendKeys(&quot;deneme test&quot;);
+	
+
+
+
+
+        waitForElement(pkg.By.name(&quot;paymentModel.creditCardModel.expireMonth&quot;));
+        var month = WDS.browser.findElement(pkg.By.name(&quot;paymentModel.creditCardModel.expireMonth&quot;));
+        var sMonth = new org.openqa.selenium.support.ui.Select(month).selectByIndex(3);
+        
+
+        waitForElement(pkg.By.name(&quot;paymentModel.creditCardModel.expireYear&quot;));
+
+	   var year = WDS.browser.findElement(pkg.By.name(&quot;paymentModel.creditCardModel.expireYear&quot;));
+	   var sYear = new org.openqa.selenium.support.ui.Select(year).selectByIndex(4);
+	   
+  
+        waitForElement(pkg.By.id(&quot;securityCode&quot;));
+
+        var ccv = WDS.browser.findElement(pkg.By.id(&quot;securityCode&quot;));
+        ccv.sendKeys(&quot;225&quot;);
+        waitForElement(pkg.By.xpath(&quot;//*[@id=&apos;newCheckout&apos;]/div/div/div[3]/div/section[1]/div[7]/div/label&quot;));
+        var acceptAgreement = WDS.browser.findElement(pkg.By.xpath(&quot;//*[@id=&apos;newCheckout&apos;]/div/div/div[3]/div/section[1]/div[7]/div/label&quot;));
+        acceptAgreement.click();
+
+        waitForElement(pkg.By.id(&quot;js-paymentBtn&quot;));
+
+
+        var paymentBtn = WDS.browser.findElement(pkg.By.id(&quot;js-paymentBtn&quot;));
+        paymentBtn.click();
+
+        
+	
+	}
+	function waitForElement(element) {
+	var waitFor = new ui.WebDriverWait(WDS.browser,10)
+	var waitElement = waitFor.until(ui.ExpectedConditions.visibilityOfElementLocated(element));
+	
+	}
+function parsePrice(child) {
+
+var realPrice = parseInt(child);
+return realPrice;
+}
+
+</stringProp>
+            <stringProp name="WebDriverSampler.parameters"></stringProp>
+            <stringProp name="WebDriverSampler.language">javascript</stringProp>
+          </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+          <hashTree/>
+          <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+          <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+            <boolProp name="ResultCollector.error_logging">false</boolProp>
+            <objProp>
+              <name>saveConfig</name>
+              <value class="SampleSaveConfiguration">
+                <time>true</time>
+                <latency>true</latency>
+                <timestamp>true</timestamp>
+                <success>true</success>
+                <label>true</label>
+                <code>true</code>
+                <message>true</message>
+                <threadName>true</threadName>
+                <dataType>true</dataType>
+                <encoding>false</encoding>
+                <assertions>true</assertions>
+                <subresults>true</subresults>
+                <responseData>false</responseData>
+                <samplerData>false</samplerData>
+                <xml>false</xml>
+                <fieldNames>true</fieldNames>
+                <responseHeaders>false</responseHeaders>
+                <requestHeaders>false</requestHeaders>
+                <responseDataOnError>false</responseDataOnError>
+                <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+                <assertionsResultsToSave>0</assertionsResultsToSave>
+                <bytes>true</bytes>
+                <sentBytes>true</sentBytes>
+                <url>true</url>
+                <threadCounts>true</threadCounts>
+                <idleTime>true</idleTime>
+                <connectTime>true</connectTime>
+              </value>
+            </objProp>
+            <stringProp name="filename"></stringProp>
+          </ResultCollector>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
