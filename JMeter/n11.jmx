@@ -88,7 +88,7 @@ var btnClick = WDS.browser.findElement(pkg.By.xpath(&quot;//a[contains(text(),&a
 if(parsePrice(value) &lt; 100) {
 	
 	
-	addclick.click();
+	btnClick.click();
 	
 	
 	}
