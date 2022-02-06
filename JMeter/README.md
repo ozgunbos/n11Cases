@@ -2,7 +2,7 @@
 
 </br> 
 
-* There are two steps to run test in JMeter.
+* There are two steps to run a test in JMeter.
 
 * Data Set Config for csv should be assigned as below in ```Data Set Config file```
 
