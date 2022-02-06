@@ -22,6 +22,22 @@
 
 <img alt="" src="https://github.com/ozgunbos/n11Cases/blob/main/JMeter/JMeterAssignPath.jpg">
 
+
+## JMeter Case Steps </br>
+
+</br> </br>
+
+* 15 products information is added to the CSV
+* The product information is read from the CSV and added to the cart.
+* While adding to the cart, It is checked whether the price of the product is below 100 TL.
+If it is more than 100 TL, It will not be added to the cart.
+* 10 items are added to the cart.
+* Continue as a guest after adding 10 products in the cart. 
+* Enter user information in user information page.
+* Then try to buy products with wrong credentials.
+
+
+
 </br></br>
 ## Sample Video for a test in JMeter </br>
 
